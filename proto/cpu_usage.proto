@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package cpu_usage.v1;
+
+service CpuUsage {
+  rpc GetCpuUsage(CpuUsageRequest) returns (CpuUsageResponse);
+}
+
+message CpuUsageRequest {
+  uint32 wait_duration_ms = 1;
+}
+
+message CpuUsageStat {
+  uint32 cpuid = 1;
+  float usage = 2;
+}
+
+message CpuUsageResponse {
+  repeated CpuUsageStat stats = 1;
+}
